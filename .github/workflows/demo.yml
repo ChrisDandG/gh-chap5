@@ -29,12 +29,22 @@ jobs:
         uses: actions/upload-artifact@v4
         with: 
           name: dist-files
-          path: |
-            dist
-            package.json
+          path: dist
+          # If you use path with a pipe, you can include multiple files/folders
+          # path: |
+          #   dist
+          #   package.json
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      # This first step will download the zip file from dist
+      # and unzip it in the dist-files folder
+      - name: Get build articacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+      - name: Output contents
+        run: ls -l
       - name: Deploy
         run: echo "Deploying..."
