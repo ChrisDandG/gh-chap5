@@ -3,8 +3,13 @@ on:
   push:
     branches:
       - main
+env:
+  MOGODB_DB_NAME: gha-demo
 jobs:
   test:
+    env:
+      # That will make the values available of deployment
+      MONGDODB_CLUSTER_ADDRESS: CHRIS
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -22,6 +27,8 @@ jobs:
         run: npm run lint
       - name: Test code
         run: npm run test
+      - name: Output information
+        run: echo "MONGDOB_DB_NAE ${{ env }}"
   build:
     needs: test
     runs-on: ubuntu-latest
