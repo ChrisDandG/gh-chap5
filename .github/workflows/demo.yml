@@ -7,7 +7,7 @@ env:
   MOGODB_DB_NAME: gha-demo
 jobs:
   test:
-    environment: dev
+    environment: prod
     env:
       # That will make the values available of deployment
       MONGDODB_CLUSTER_ADDRESS: CHRIS
