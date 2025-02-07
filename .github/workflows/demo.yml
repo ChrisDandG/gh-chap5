@@ -28,7 +28,7 @@ jobs:
       - name: Test code
         run: npm run test
       - name: Output information
-        run: echo "MONGDOB_DB_NAE ${{ env.MOGODB_DB_NAME }}"
+        run: echo "MONGDOB_DB_NAE ${{ env.MOGODB_DB_NAME }}, ${{ secrets.MONGDOB_DB_NAE }}"
   build:
     needs: test
     runs-on: ubuntu-latest
